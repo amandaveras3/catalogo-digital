@@ -330,23 +330,6 @@ of this software and associated documentation files...
 
 ---
 
-# Requisitos Atendidos
-
-| Requisito            | Status |
-| -------------------- | ------ |
-| Dashboard funcional  | Sim    |
-| Tela de Login        | Sim    |
-| Login com Google     | Sim    |
-| Tela de Cadastro     | Sim    |
-| Banco de Dados       | Sim    |
-| Sistema de Busca     | Sim    |
-| Relatórios           | Sim    |
-| Interface Organizada | Sim    |
-| Repositório GitHub   | Sim    |
-| Responsividade       | Sim    |
-| Documentação         | Sim    |
-| Relatório PDF        | Sim    |
-
 **Versão:** 1.0.0
 **Ano:** 2026
 **Projeto Acadêmico – Desenvolvimento de Sistemas**
