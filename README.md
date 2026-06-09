@@ -307,6 +307,16 @@ Compatível com:
 
 ---
 
+# Catálogo Digital
+
+### Demonstração Online
+
+Acesse a versão publicada do sistema:
+
+**https://catalagogest.netlify.app**
+
+---
+
 # Desenvolvido por
 
 **Amanda Félix Veras**
