@@ -320,7 +320,9 @@ Acesse a versão publicada do sistema:
 # Desenvolvido por
 
 **Amanda Félix Veras**
+
 Curso Técnico em Desenvolvimento de Sistemas
+
 EEEP Alfredo Nunes de Melo
 
 ---
