@@ -225,44 +225,97 @@ firebaseConfig = {
 
 ## Modelo Entidade Relacionamento
 
-### Usuários
+## Chaves Primárias
 
-| Campo | Tipo    |
-| ----- | ------- |
-| id    | INT     |
-| nome  | VARCHAR |
-| email | VARCHAR |
-| senha | VARCHAR |
+| Tabela       | Chave Primária | Descrição                          |
+| ------------ | -------------- | ---------------------------------- |
+| usuarios     | id             | Identificador único do usuário     |
+| produtos     | id             | Identificador único do produto     |
+| clientes     | id             | Identificador único do cliente     |
+| vendas       | id             | Identificador único da venda       |
+| atendimentos | id             | Identificador único do atendimento |
+
+---
+
+## Chaves Estrangeiras
+
+| Tabela       | Campo      | Referência   |
+| ------------ | ---------- | ------------ |
+| vendas       | cliente_id | clientes(id) |
+| vendas       | produto_id | produtos(id) |
+| atendimentos | cliente_id | clientes(id) |
+| atendimentos | usuario_id | usuarios(id) |
+
+---
+
+## Modelo Relacional
+
+```plaintext
+USUARIOS
+--------
+PK id
+
+PRODUTOS
+--------
+PK id
+
+CLIENTES
+--------
+PK id
+
+VENDAS
+------
+PK id
+FK cliente_id → CLIENTES(id)
+FK produto_id → PRODUTOS(id)
+
+ATENDIMENTOS
+------------
+PK id
+FK cliente_id → CLIENTES(id)
+FK usuario_id → USUARIOS(id)
+```
+
+## Dicionário de Dados
+
+### Usuarios
+
+| Campo | Tipo         | Chave |
+| ----- | ------------ | ----- |
+| id    | INT          | PK    |
+| nome  | VARCHAR(100) |       |
+| email | VARCHAR(150) |       |
+| senha | VARCHAR(255) |       |
 
 ### Produtos
 
-| Campo     | Tipo    |
-| --------- | ------- |
-| id        | INT     |
-| nome      | VARCHAR |
-| categoria | VARCHAR |
-| preco     | DECIMAL |
-| estoque   | INT     |
+| Campo     | Tipo          | Chave |
+| --------- | ------------- | ----- |
+| id        | INT           | PK    |
+| nome      | VARCHAR(100)  |       |
+| categoria | VARCHAR(50)   |       |
+| preco     | DECIMAL(10,2) |       |
+| estoque   | INT           |       |
 
 ### Clientes
 
-| Campo    | Tipo    |
-| -------- | ------- |
-| id       | INT     |
-| nome     | VARCHAR |
-| email    | VARCHAR |
-| telefone | VARCHAR |
+| Campo    | Tipo         | Chave |
+| -------- | ------------ | ----- |
+| id       | INT          | PK    |
+| nome     | VARCHAR(100) |       |
+| email    | VARCHAR(150) |       |
+| telefone | VARCHAR(20)  |       |
 
 ### Vendas
 
-| Campo       | Tipo    |
-| ----------- | ------- |
-| id          | INT     |
-| cliente_id  | INT     |
-| produto_id  | INT     |
-| quantidade  | INT     |
-| valor_total | DECIMAL |
-| data_venda  | DATE    |
+| Campo       | Tipo          | Chave |
+| ----------- | ------------- | ----- |
+| id          | INT           | PK    |
+| cliente_id  | INT           | FK    |
+| produto_id  | INT           | FK    |
+| quantidade  | INT           |       |
+| valor_total | DECIMAL(10,2) |       |
+| data_venda  | DATE          |       |
 
 ---
 
