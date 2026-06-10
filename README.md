@@ -172,7 +172,7 @@ catalogo-digital/
 ## 1. Clonar Repositório
 
 ```bash
-git clone https://github.com/seuusuario/catalogo-digital.git
+git clone https://github.com/amandaveras3/catalogo-digital.git
 ```
 
 ## 2. Entrar na Pasta
