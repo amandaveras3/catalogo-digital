@@ -1,0 +1,52 @@
+@startuml
+title Diagrama Geral do Sistema - Catálogo Digital
+actor Usuario
+actor Google
+package "Interface Web" {
+  [Tela de Login]
+  [Tela de Cadastro]
+  [Dashboard]
+  [Catálogo de Produtos]
+  [Clientes]
+  [Vendas]
+  [Relatórios]
+}
+package "Camada de Lógica" {
+  [Autenticação]
+  [Gerenciamento de Produtos]
+  [Gerenciamento de Clientes]
+  [Controle de Vendas]
+  [Busca]
+  [Geração de Relatórios]
+}
+database "Banco de Dados LocalStorage" {
+  [Usuários]
+  [Produtos]
+  [Clientes]
+  [Vendas]
+  [Atendimentos]
+}
+Usuario --> [Tela de Login]
+Usuario --> [Tela de Cadastro]
+Usuario --> [Dashboard]
+[Tela de Login] --> [Autenticação]
+[Tela de Cadastro] --> [Autenticação]
+Google --> [Autenticação]
+[Dashboard] --> [Gerenciamento de Produtos]
+[Dashboard] --> [Gerenciamento de Clientes]
+[Dashboard] --> [Controle de Vendas]
+[Dashboard] --> [Geração de Relatórios]
+[Catálogo de Produtos] --> [Busca]
+[Catálogo de Produtos] --> [Gerenciamento de Produtos]
+[Clientes] --> [Gerenciamento de Clientes]
+[Vendas] --> [Controle de Vendas]
+[Relatórios] --> [Geração de Relatórios]
+[Autenticação] --> [Usuários]
+[Gerenciamento de Produtos] --> [Produtos]
+[Gerenciamento de Clientes] --> [Clientes]
+[Controle de Vendas] --> [Vendas]
+[Geração de Relatórios] --> [Produtos]
+[Geração de Relatórios] --> [Clientes]
+[Geração de Relatórios] --> [Vendas]
+[Geração de Relatórios] --> [Atendimentos]
+@enduml

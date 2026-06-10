@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="meta.title">Catálogo Digital | Sistema</title>
+    <meta
+      name="description"
+      content="Sistema profissional de catálogo digital com dashboard, vendas, clientes e relatórios."
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="animated-bg" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span
+      ><span></span>
+    </div>
+    <div id="navHotspot" class="nav-hotspot" aria-hidden="true"></div>
+    <div id="toast" class="toast"></div>
+
+    <section id="authView" class="auth-page">
+      <div class="auth-card">
+        <select
+          id="authLanguageSelect"
+          class="language-select auth-lang"
+          aria-label="Idioma"
+        >
+          <option value="pt-BR">PT-BR</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="it">Italiano</option>
+        </select>
+        <div class="brand">
+          <img
+            class="logo-img"
+            src="assets/logo.svg"
+            alt="Logo Catálogo Digital"
+          />
+          <div>
+            <h1 data-i18n="brand.title">Catálogo Digital</h1>
+            <p data-i18n="brand.subtitle">
+              Gestão de produtos, vendas, clientes e relatórios.
+            </p>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="login" data-i18n="auth.loginTab">
+            Login
+          </button>
+          <button class="tab" data-tab="register" data-i18n="auth.registerTab">
+            Cadastro
+          </button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label
+            >E-mail<input
+              type="email"
+              id="loginEmail"
+              required
+              placeholder="admin@catalogo.com"
+          /></label>
+          <label
+            >Senha<input
+              type="password"
+              id="loginPassword"
+              required
+              placeholder="123456"
+          /></label>
+          <button type="submit" class="btn primary" data-i18n="auth.enter">
+            Entrar
+          </button>
+          <button type="button" id="googleLogin" class="btn google">
+            <img src="assets/icons/google.svg" alt="" /><span
+              data-i18n="auth.google"
+              >Entrar com Google</span
+            >
+          </button>
+          <small data-i18n="auth.testAccount"
+            >Conta teste: admin@catalogo.com / 123456</small
+          >
+        </form>
+
+        <form id="registerForm" class="auth-form hidden">
+          <label
+            >Nome<input
+              type="text"
+              id="registerName"
+              required
+              placeholder="Seu nome"
+          /></label>
+          <label
+            >E-mail<input
+              type="email"
+              id="registerEmail"
+              required
+              placeholder="email@exemplo.com"
+          /></label>
+          <label
+            >Senha<input
+              type="password"
+              id="registerPassword"
+              required
+              minlength="6"
+              placeholder="mínimo 6 caracteres"
+          /></label>
+          <button
+            type="submit"
+            class="btn primary"
+            data-i18n="auth.createAccount"
+          >
+            Criar conta
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <main id="appView" class="app hidden">
+      <aside class="sidebar">
+        <button
+          id="brandHome"
+          class="brand small brand-home"
+          type="button"
+          aria-label="Voltar ao início"
+        >
+          <img
+            class="logo-img small-logo"
+            src="assets/logo.svg"
+            alt="Logo"
+          /><strong data-i18n="brand.short">Catálogo Gest</strong>
+        </button>
+        <nav>
+          <button
+            class="nav-link active"
+            data-section="dashboard"
+            data-title-key="nav.dashboard"
+          >
+            <img src="assets/icons/dashboard.svg" alt="" /><span
+              data-i18n="nav.dashboard"
+              >Dashboard</span
+            >
+          </button>
+          <button
+            class="nav-link"
+            data-section="catalogo"
+            data-title-key="nav.catalogo"
+          >
+            <img src="assets/icons/catalog.svg" alt="" /><span
+              data-i18n="nav.catalogo"
+              >Catálogo</span
+            >
+          </button>
+          <button
+            class="nav-link"
+            data-section="produtos"
+            data-title-key="nav.produtos"
+          >
+            <img src="assets/icons/products.svg" alt="" /><span
+              data-i18n="nav.produtos"
+              >Produtos</span
+            >
+          </button>
+          <button
+            class="nav-link"
+            data-section="clientes"
+            data-title-key="nav.clientes"
+          >
+            <img src="assets/icons/clients.svg" alt="" /><span
+              data-i18n="nav.clientes"
+              >Clientes</span
+            >
+          </button>
+          <button
+            class="nav-link"
+            data-section="vendas"
+            data-title-key="nav.vendas"
+          >
+            <img src="assets/icons/sales.svg" alt="" /><span
+              data-i18n="nav.vendas"
+              >Vendas</span
+            >
+          </button>
+          <button
+            class="nav-link"
+            data-section="atendimentos"
+            data-title-key="nav.atendimentos"
+          >
+            <img src="assets/icons/tickets.svg" alt="" /><span
+              data-i18n="nav.atendimentos"
+              >Atendimentos</span
+            >
+          </button>
+          <button
+            class="nav-link"
+            data-section="relatorios"
+            data-title-key="nav.relatorios"
+          >
+            <img src="assets/icons/reports.svg" alt="" /><span
+              data-i18n="nav.relatorios"
+              >Relatórios</span
+            >
+          </button>
+        </nav>
+        <button id="logoutBtn" class="btn danger">
+          <img src="assets/icons/logout.svg" alt="" /><span
+            data-i18n="nav.logout"
+            >Sair</span
+          >
+        </button>
+      </aside>
+
+      <section class="content">
+        <header class="topbar">
+          <div>
+            <h2 id="pageTitle" data-i18n="nav.dashboard">Dashboard</h2>
+            <p id="welcomeText" data-i18n="top.welcome">Bem-vindo(a).</p>
+          </div>
+          <div class="top-actions">
+            <select
+              id="languageSelect"
+              class="language-select"
+              aria-label="Idioma"
+            >
+              <option value="pt-BR">PT-BR</option>
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="it">Italiano</option>
+            </select>
+            <div class="search-box">
+              <input
+                id="globalSearch"
+                type="search"
+                placeholder="Buscar no sistema..."
+                data-i18n-placeholder="top.search"
+                autocomplete="off"
+              />
+              <div id="searchResults" class="search-results hidden"></div>
+            </div>
+            <button id="themeToggle" class="btn ghost">
+              <img src="assets/icons/moon.svg" alt="" /><span
+                data-i18n="top.darkMode"
+                >Modo escuro</span
+              >
+            </button>
+          </div>
+        </header>
+
+        <section id="dashboard" class="page active">
+          <div class="cards">
+            <article class="metric">
+              <span>Produtos cadastrados</span><strong id="mProdutos">0</strong>
+            </article>
+            <article class="metric">
+              <span>Clientes cadastrados</span><strong id="mClientes">0</strong>
+            </article>
+            <article class="metric">
+              <span>Produtos vendidos</span><strong id="mVendidos">0</strong>
+            </article>
+            <article class="metric">
+              <span>Faturamento</span><strong id="mFaturamento">R$ 0,00</strong>
+            </article>
+          </div>
+          <div class="grid two dashboard-charts">
+            <div class="panel">
+              <h3 id="salesChartTitle">Resumo financeiro</h3>
+              <canvas id="salesChart" height="220"></canvas>
+            </div>
+            <div class="panel">
+              <h3 id="productsChartTitle">Produtos mais vendidos</h3>
+              <canvas id="productsChart" height="220"></canvas>
+            </div>
+            <div class="panel full">
+              <h3>Últimas vendas</h3>
+              <div id="recentSales" class="list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="catalogo" class="page">
+          <div class="section-head">
+            <h3>Catálogo público</h3>
+            <p>Visualização dos produtos disponíveis para venda.</p>
+          </div>
+          <div id="catalogCards" class="product-grid"></div>
+        </section>
+
+        <section id="produtos" class="page">
+          <div class="grid two">
+            <form id="productForm" class="panel form-panel">
+              <h3>Cadastrar produto</h3>
+              <input type="hidden" id="productId" />
+              <label>Nome<input id="productName" required /></label>
+              <label
+                >Categoria<input
+                  id="productCategory"
+                  required
+                  placeholder="Roupas, acessórios, doces..."
+              /></label>
+              <label
+                >Preço<input
+                  id="productPrice"
+                  type="number"
+                  step="0.01"
+                  required
+              /></label>
+              <label
+                >Estoque<input id="productStock" type="number" required
+              /></label>
+              <label
+                >Imagem do produto
+                <input
+                  id="productImage"
+                  type="file"
+                  accept="image/png, image/jpeg, image/webp, image/svg+xml"
+                />
+                <small
+                  >Selecione uma imagem do computador. Formatos aceitos: PNG,
+                  JPG, WEBP ou SVG.</small
+                >
+              </label>
+              <div id="imagePreview" class="image-preview hidden">
+                <img
+                  id="productImagePreview"
+                  alt="Pré-visualização do produto"
+                />
+                <button type="button" id="removeProductImage" class="btn ghost">
+                  Remover imagem
+                </button>
+              </div>
+              <button class="btn primary" type="submit">Salvar produto</button>
+              <button class="btn ghost" type="reset" id="clearProduct">
+                Limpar
+              </button>
+            </form>
+            <div class="panel">
+              <h3>Produtos</h3>
+              <div id="productList" class="table-wrap"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="clientes" class="page">
+          <div class="grid two">
+            <form id="clientForm" class="panel form-panel">
+              <h3>Cadastrar cliente</h3>
+              <input type="hidden" id="clientId" />
+              <label>Nome<input id="clientName" required /></label>
+              <label>Telefone<input id="clientPhone" required /></label>
+              <label>E-mail<input id="clientEmail" type="email" /></label>
+              <button class="btn primary" type="submit">Salvar cliente</button>
+              <button class="btn ghost" type="reset" id="clearClient">
+                Limpar
+              </button>
+            </form>
+            <div class="panel">
+              <h3>Clientes</h3>
+              <div id="clientList" class="table-wrap"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="vendas" class="page">
+          <div class="grid two">
+            <form id="saleForm" class="panel form-panel">
+              <h3>Registrar venda</h3>
+              <label>Cliente<select id="saleClient" required></select></label>
+              <label>Produto<select id="saleProduct" required></select></label>
+              <label
+                >Quantidade<input
+                  id="saleQuantity"
+                  type="number"
+                  min="1"
+                  value="1"
+                  required
+              /></label>
+              <label
+                >Data da venda<input id="saleDate" type="date" required
+              /></label>
+              <button class="btn primary" type="submit">Finalizar venda</button>
+              <button class="btn ghost" type="reset" id="clearSale">
+                Limpar
+              </button>
+            </form>
+            <div class="panel">
+              <h3>Vendas realizadas</h3>
+              <div id="saleList" class="table-wrap"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="atendimentos" class="page">
+          <div class="grid two">
+            <form id="ticketForm" class="panel form-panel">
+              <h3>Novo atendimento</h3>
+              <label>Cliente<select id="ticketClient" required></select></label>
+              <label
+                >Canal<select id="ticketChannel">
+                  <option>WhatsApp</option>
+                  <option>Instagram</option>
+                  <option>Telefone</option>
+                  <option>Presencial</option>
+                </select></label
+              >
+              <label
+                >Status<select id="ticketStatus">
+                  <option>Aberto</option>
+                  <option>Em andamento</option>
+                  <option>Concluído</option>
+                </select></label
+              >
+              <label
+                >Observação<textarea id="ticketNote" rows="3"></textarea>
+              </label>
+              <button class="btn primary" type="submit">
+                Salvar atendimento
+              </button>
+              <button class="btn ghost" type="reset" id="clearTicket">
+                Limpar
+              </button>
+            </form>
+            <div class="panel">
+              <h3>Atendimentos</h3>
+              <div id="ticketList" class="table-wrap"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="relatorios" class="page">
+          <div class="panel">
+            <h3>Relatórios do sistema</h3>
+            <div class="filters">
+              <label>Data inicial<input id="dateStart" type="date" /></label>
+              <label>Data final<input id="dateEnd" type="date" /></label>
+              <button id="generateReport" class="btn primary">
+                Gerar relatório
+              </button>
+              <button id="printReport" class="btn ghost">
+                Imprimir / Salvar PDF
+              </button>
+            </div>
+            <div id="printReportHeader" class="print-report-header">
+              <img src="assets/logo.svg" alt="Logo Catálogo Digital" />
+              <div>
+                <strong>Catálogo Gest</strong>
+                <span>Relatório gerencial do sistema</span>
+              </div>
+            </div>
+            <div id="reportOutput" class="report"></div>
+            <div class="grid two report-charts">
+              <div class="panel chart-panel">
+                <h3 id="reportSalesChartTitle">Vendas por dia</h3>
+                <canvas id="reportSalesChart" height="220"></canvas>
+              </div>
+              <div class="panel chart-panel">
+                <h3 id="reportProductsChartTitle">Produtos mais vendidos</h3>
+                <canvas id="reportProductsChart" height="220"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

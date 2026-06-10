@@ -1,0 +1,18 @@
+@startuml
+title Estado de Máquina - Venda
+[*] --> VendaCriada
+VendaCriada --> ProdutoSelecionado : selecionar produto
+ProdutoSelecionado --> ClienteSelecionado : selecionar cliente
+ClienteSelecionado --> QuantidadeDefinida : informar quantidade
+QuantidadeDefinida --> TotalCalculado : calcular valor total
+TotalCalculado --> VendaConfirmada : confirmar venda
+VendaConfirmada --> EstoqueAtualizado : baixar estoque
+EstoqueAtualizado --> Finalizada : salvar venda
+VendaCriada --> Cancelada : cancelar
+ProdutoSelecionado --> Cancelada : cancelar
+ClienteSelecionado --> Cancelada : cancelar
+QuantidadeDefinida --> Cancelada : cancelar
+TotalCalculado --> Cancelada : cancelar
+Finalizada --> [*]
+Cancelada --> [*]
+@enduml

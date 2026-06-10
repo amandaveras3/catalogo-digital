@@ -1,0 +1,18 @@
+@startuml
+title Estado de Máquina - Produto
+[*] --> Cadastrado
+Cadastrado --> Disponivel : estoque maior que 0
+Disponivel --> EmEdicao : editar produto
+EmEdicao --> Disponivel : salvar alterações
+Disponivel --> BaixoEstoque : estoque baixo
+BaixoEstoque --> Disponivel : repor estoque
+Disponivel --> Esgotado : estoque igual a 0
+BaixoEstoque --> Esgotado : estoque zerado
+Esgotado --> Disponivel : repor estoque
+Disponivel --> Inativo : desativar produto
+BaixoEstoque --> Inativo : desativar produto
+Esgotado --> Inativo : desativar produto
+Inativo --> Disponivel : reativar produto
+Inativo --> Excluido : excluir produto
+Excluido --> [*]
+@enduml

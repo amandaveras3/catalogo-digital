@@ -1,0 +1,76 @@
+@startuml
+title Diagrama de Classes - Catálogo Digital
+class Usuario {
+  - id: int
+  - nome: string
+  - email: string
+  - senha: string
+  - tipoLogin: string
+  + login()
+  + cadastrar()
+  + logout()
+}
+class Produto {
+  - id: int
+  - nome: string
+  - categoria: string
+  - preco: double
+  - estoque: int
+  - status: string
+  + cadastrar()
+  + editar()
+  + excluir()
+  + atualizarEstoque()
+}
+class Cliente {
+  - id: int
+  - nome: string
+  - email: string
+  - telefone: string
+  + cadastrar()
+  + editar()
+  + excluir()
+}
+class Venda {
+  - id: int
+  - data: date
+  - quantidade: int
+  - valorTotal: double
+  - status: string
+  + registrarVenda()
+  + cancelarVenda()
+  + calcularTotal()
+}
+class Atendimento {
+  - id: int
+  - data: date
+  - descricao: string
+  - status: string
+  + registrar()
+  + finalizar()
+}
+class Relatorio {
+  - id: int
+  - periodoInicio: date
+  - periodoFim: date
+  + gerarRelatorioVendas()
+  + gerarRelatorioFinanceiro()
+  + exportarPDF()
+}
+class Dashboard {
+  + exibirProdutos()
+  + exibirClientes()
+  + exibirVendas()
+  + exibirFaturamento()
+}
+Usuario "1" --> "0..*" Produto
+Usuario "1" --> "0..*" Cliente
+Usuario "1" --> "0..*" Venda
+Cliente "1" --> "0..*" Venda
+Produto "1" --> "0..*" Venda
+Venda "1" --> "1" Relatorio
+Dashboard --> Produto
+Dashboard --> Cliente
+Dashboard --> Venda
+Dashboard --> Relatorio
+@enduml

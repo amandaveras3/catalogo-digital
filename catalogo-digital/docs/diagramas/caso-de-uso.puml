@@ -1,0 +1,33 @@
+@startuml
+title Diagrama de Caso de Uso - Catálogo Digital
+actor Administrador
+actor Cliente
+actor Google
+rectangle "Sistema de Catálogo Digital" {
+  usecase "Fazer login" as UC1
+  usecase "Cadastrar usuário" as UC2
+  usecase "Login com Google" as UC3
+  usecase "Gerenciar produtos" as UC4
+  usecase "Cadastrar clientes" as UC5
+  usecase "Registrar vendas" as UC6
+  usecase "Buscar produtos" as UC7
+  usecase "Visualizar dashboard" as UC8
+  usecase "Gerar relatórios" as UC9
+  usecase "Exportar relatório em PDF" as UC10
+  usecase "Consultar catálogo" as UC11
+}
+Administrador --> UC1
+Administrador --> UC2
+Administrador --> UC3
+Administrador --> UC4
+Administrador --> UC5
+Administrador --> UC6
+Administrador --> UC7
+Administrador --> UC8
+Administrador --> UC9
+Administrador --> UC10
+Cliente --> UC11
+Cliente --> UC7
+Google --> UC3
+UC9 --> UC10
+@enduml
